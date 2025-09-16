@@ -1,0 +1,106 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# TypeScript build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+*.env
+
+# JWT secrets and API keys
+secrets/
+keys/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Other IDEs
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary folders
+tmp/
+temp/
+
+# Database files (for when we add databases later)
+*.sqlite
+*.sqlite3
+*.db
+
+# Test artifacts
+test-results/
+*.test.js.map
+
+# Azure specific (since we'll use Azure)
+.azure/
+
+# AWS specific (since we'll use AWS)
+.aws/
+
+# Docker
+.dockerignore
+
+# Certificates and private keys
+*.crt
+*.key
+*.pem
+certificate.p12
+
+# Local development files
+.local/
+local-config.json
+
+# Backup files
+*.bak
+*.backup
+*.old

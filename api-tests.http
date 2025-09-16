@@ -1,0 +1,68 @@
+# API Tests for IAM Learning Project
+# Use this file with the REST Client extension in VS Code
+# Click "Send Request" above each request to test
+
+###
+
+### Test 1: Hello World Endpoint
+GET http://localhost:3000/hello
+
+###
+
+### Test 2: Register First User
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+###
+
+### Test 3: Register Second User  
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "email": "jane@example.com",
+  "password": "mypassword456"
+}
+
+###
+
+### Test 4: Try to Register Duplicate User (should fail)
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "differentpassword"
+}
+
+###
+
+### Test 5: Try Registration with Missing Email (should fail)
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "password": "somepassword"
+}
+
+###
+
+### Test 6: Try Registration with Missing Password (should fail)
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com"
+}
+
+###
+
+### Test 7: Debug - View All Users (see the security problem!)
+GET http://localhost:3000/debug/users
+
+###

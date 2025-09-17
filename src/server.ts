@@ -73,10 +73,59 @@ app.post("/register", async (req, res) => {
     }
 });
 
+
+// Login endpoint - verify hashed passwords
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  
+  // Basic validation
+  if (!email || !password) {
+    return res.status(400).json({ 
+      error: 'Email and password are required' 
+    });
+  }
+  
+  try {
+    // Find the user by email
+    const user = users.find(u => u.email === email);
+    if (!user) {
+      return res.status(401).json({ 
+        error: 'Invalid email or password' 
+      });
+    }
+    
+    // Compare the provided password with the stored hash
+    const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+    
+    if (isPasswordValid) {
+      // Success! Password matches
+      res.json({
+        message: 'Login successful',
+        user: {
+          id: user.id,
+          email: user.email
+        }
+      });
+    } else {
+      // Password doesn't match
+      res.status(401).json({ 
+        error: 'Invalid email or password' 
+      });
+    }
+    
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ 
+      error: 'Internal server error' 
+    });
+  }
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:3000`);
     console.log("Available endpoints:");
     console.log("  GET  /hello     - Test endpoint");
     console.log("  POST /register  - Register new user");
+    console.log('  POST /login        - Login with email/password');
     console.log("  GET  /debug/users  - View all users (debug only)");
 });
